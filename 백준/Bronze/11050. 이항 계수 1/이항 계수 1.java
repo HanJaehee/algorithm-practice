@@ -10,24 +10,16 @@ public class Main {
     int N = Integer.parseInt(nums[0]);
     int K = Integer.parseInt(nums[1]);
 
-//    System.out.println(factorial(N) / (factorial(N - K) * factorial(K)));
-    System.out.println(BC(N,K));
+    System.out.println(factorial(N) / (factorial(N - K) * factorial(K)));
 
   }
 
   public static int factorial(int n) {
-    if (n == 1) {
-      return 1;
-    } else {
-      return factorial(n - 1) * n;
-    }
-  }
-
-  public static int BC(int N, int K) {
-    if (N == K || K == 0) {
-      return 1;
+    int result = 1;
+    for(int i=1; i<=n; i++){
+      result *= i;
     }
 
-    return BC(N - 1, K - 1) + BC(N - 1, K);
+    return result;
   }
 }
