@@ -7,28 +7,17 @@ public class Main {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int L = Integer.parseInt(br.readLine());
 
-    long[] cache = new long[L];
-    buildCache(cache);
 
     String str = br.readLine();
 
     long sum = 0;
 
+    long cache = 1;
     for (int i = 0; i < L; i++) {
-      sum += mod(cache, str.charAt(i) - 'a' + 1, i);
+      sum += cache * (str.charAt(i) - 'a' + 1);
+      cache = (cache * 31) % 1234567891;
     }
 
-    System.out.println(sum);
-  }
-
-  public static void buildCache(long[] cache) {
-    cache[0] = 1;
-    for (int i = 1; i < cache.length; i++) {
-      cache[i] = cache[i - 1] * 31;
-    }
-  }
-
-  public static long mod(long[] cache, int n, int i) {
-    return n * cache[i];
+    System.out.println(sum % 1234567891);
   }
 }
