@@ -29,13 +29,29 @@ public class Main {
 
     for (int i = 1; i <= N; i++) {
       if (!visited[i]) {
-        dfs(i);
+        bfs(i);
         result++;
       }
     }
 
     System.out.println(result);
 
+  }
+
+  public static void bfs(int n) {
+    Queue<Integer> q = new LinkedList<>();
+    q.offer(n);
+    visited[n] = true;
+
+    while (!q.isEmpty()) {
+      int current = q.poll();
+      for (int i = 1; i <= 1000; i++) {
+        if (!visited[i] && map[current][i]) {
+          visited[i] = true;
+          q.offer(i);
+        }
+      }
+    }
   }
 
   public static void dfs(int n) {
